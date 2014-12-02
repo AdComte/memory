@@ -22,7 +22,25 @@ namespace TP_Memory
 
         private void btn_Distribuer_Click(object sender, EventArgs e)
         {
-            Distribution_Sequentielle();
+            // On récupère le nombre d'images dans le réservoir :
+            nbCartesDansSabot = ilSabotDeCartes.Images.Count - 1;
+            // On enlève 1 car :
+            // -> la l'image 0 ne compte pas c’est l’image du dos de carte 
+            // -> les indices vont de 0 à N-1, donc les indices vont jusqu’à 39
+            //    s’il y a 40 images au total *
+
+            // On récupère également le nombre de cartes à distribuées sur la tapis
+            // autrement dit le nombre de contrôles présents sur le conteneur
+            nbCartesSurTapis = tlpTapisDeCartes.Controls.Count;
+
+            // On effectue la distribution (aléatoire) proprement dite
+            Distribution_Aleatoire();
+
+        }
+
+        private void Distribution_Aleatoire()
+        {
+            throw new NotImplementedException();
         }
 
         private void Distribution_Sequentielle()
@@ -62,5 +80,9 @@ namespace TP_Memory
 
         }
 
+
+        public int nbCartesDansSabot { get; set; }
+
+        public int nbCartesSurTapis { get; set; }
     }
 }
